@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="filters">
+      <label>
+        Filter by Name:
+        <input type="text" [(ngModel)]="filterName" placeholder="Enter customer name">
+      </label>
+      <label>
+        Filter by Minimum Transaction Amount:
+        <input type="number" [(ngModel)]="filterAmount" placeholder="Min amount">
+      </label>
+    </div>
+  
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Total Transaction Amount</th>
+            <th>Transactions per Day</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of filterTransactions()" class="table-row">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.totalTransactionAmount }}</td>
+            <td>
+              <button class="view-button" (click)="showChart(customer)">View Chart</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div width="400" height="400">
+    <canvas id="canvas">{{chart}}</canvas>
+  </div>
+
+
+
+
+  
+  
